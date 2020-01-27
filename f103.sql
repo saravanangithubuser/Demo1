@@ -28,14 +28,14 @@ prompt APPLICATION 103 - Apex Demo
 -- Application Export:
 --   Application:     103
 --   Name:            Apex Demo
---   Date and Time:   14:19 Monday January 27, 2020
+--   Date and Time:   14:27 Monday January 27, 2020
 --   Exported By:     ADMIN
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                     10
+--     Pages:                     11
 --       Items:                   30
 --       Processes:                8
---       Regions:                 12
+--       Regions:                 13
 --       Buttons:                 12
 --       Dynamic Actions:          2
 --     Shared Components:
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Apex Demo'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20200120150656'
+,p_last_upd_yyyymmddhh24miss=>'20200127142316'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -23844,6 +23844,131 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_api.id(19037308185525365)
+);
+end;
+/
+prompt --application/pages/page_00005
+begin
+wwv_flow_api.create_page(
+ p_id=>5
+,p_user_interface_id=>wwv_flow_api.id(14841644295898550)
+,p_name=>'Simple report'
+,p_step_title=>'Simple report'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'ADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20200127142316'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(19701037597320016)
+,p_plug_name=>'Simple report'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(14756544985898365)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_query_type=>'TABLE'
+,p_query_table=>'EMP'
+,p_include_rowid_column=>false
+,p_plug_source_type=>'NATIVE_IR'
+);
+wwv_flow_api.create_worksheet(
+ p_id=>wwv_flow_api.id(19701180659320016)
+,p_name=>'Simple report'
+,p_max_row_count_message=>'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+,p_no_data_found_message=>'No data found.'
+,p_show_nulls_as=>'-'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_show_detail_link=>'N'
+,p_download_formats=>'CSV:HTML:EMAIL:XLS:PDF:RTF'
+,p_owner=>'ADMIN'
+,p_internal_uid=>19701180659320016
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19701533807320033)
+,p_db_column_name=>'EMPNO'
+,p_display_order=>1
+,p_column_identifier=>'A'
+,p_column_label=>'Employee Number'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19701904277320040)
+,p_db_column_name=>'ENAME'
+,p_display_order=>2
+,p_column_identifier=>'B'
+,p_column_label=>'Employee Name'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19702349562320041)
+,p_db_column_name=>'JOB'
+,p_display_order=>3
+,p_column_identifier=>'C'
+,p_column_label=>'Job'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19702733708320042)
+,p_db_column_name=>'MGR'
+,p_display_order=>4
+,p_column_identifier=>'D'
+,p_column_label=>'Mgr'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19703159846320042)
+,p_db_column_name=>'HIREDATE'
+,p_display_order=>5
+,p_column_identifier=>'E'
+,p_column_label=>'Hiredate'
+,p_column_type=>'DATE'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19703542844320043)
+,p_db_column_name=>'SAL'
+,p_display_order=>6
+,p_column_identifier=>'F'
+,p_column_label=>'Sal'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19703989759320043)
+,p_db_column_name=>'COMM'
+,p_display_order=>7
+,p_column_identifier=>'G'
+,p_column_label=>'Comm'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(19704330204320044)
+,p_db_column_name=>'DEPTNO'
+,p_display_order=>8
+,p_column_identifier=>'H'
+,p_column_label=>'Deptno'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
 );
 end;
 /
